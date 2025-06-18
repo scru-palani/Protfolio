@@ -27,16 +27,17 @@ const Home = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const skills = [
-    { name: "React", icon: "⚛️" },
-    { name: "JavaScript", icon: "🟨" },
-    { name: "Tailwindcss", icon: "🔷" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "HTML5", icon: "🧡" },
-    { name: "CSS3", icon: "🔵" },
-    { name: "MongoDB", icon: "🍃" },
-    { name: "Express.js", icon: "⚡" },
-    { name: "Git", icon: "🔧" },
-    { name: "Redux", icon: "🟣" },
+    { name: "React", image: "/react.png", icon: "⚛️" },
+    { name: "HTML5", image: "/html.png", icon: "🧡" },
+    { name: "CSS", image: "/css.svg", icon: "🔵" },
+    { name: "JavaScript", image: "/js.svg", icon: "🟨" },
+    { name: "Node.js", image: "/nodejs.svg", icon: "🔷" },
+    { name: "Tailwindcss", image: "/tailwind-css-2.svg", icon: "🟢" },
+    { name: "MongoDB", image: "/mangodb.png", icon: "🍃" },
+    { name: "Git", image: "/git.svg", icon: "🔧" },
+    { name: "PHP", image: "/php.svg", icon: "🟣" },
+    { name: "Wordpress", image: "/wordpress.svg", icon: "⚡" },
+    { name: "Figma", image: "/figma.svg", icon: "🔧" },
   ];
 
   const projects = [
@@ -327,7 +328,11 @@ const Home = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:shadow-lg group-hover:shadow-blue-500/25 transition-all duration-300">
-                  <span className="text-2xl">{skill.icon}</span>
+                  <img
+                    src={skill.image}
+                    alt={skill.name}
+                    className="w-10 h-10 object-contain"
+                  />
                 </div>
                 <h3 className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-300">
                   {skill.name}
