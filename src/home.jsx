@@ -48,7 +48,7 @@ const Home = () => {
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       image:
         "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
-      link: "#",
+      link: "https://sanaecom.netlify.app/",
     },
     {
       title: "Task Management App",
@@ -81,13 +81,6 @@ const Home = () => {
 
   const experiences = [
     {
-      title: "Senior React Developer",
-      company: "Tech Solutions Inc.",
-      period: "2022 - Present",
-      description:
-        "Lead frontend development team, architected scalable React applications, and mentored junior developers.",
-    },
-    {
       title: "Developer & Juniour Analyst",
       company: "Scrutiny Soft Solution - Chennai",
       period: "Nov-2024 - Present",
@@ -100,6 +93,13 @@ const Home = () => {
       period: "01-Jul-2024 - 30-Sep-2024",
       description:
         "Skilled in SEO optimization, and social media management, with a proven track record of achieving significant increases in website traffic, lead generation, and engagement. Adept at conducting in-depth research and identifying new opportunities to drive digital marketing performance.",
+    },
+    {
+      title: "PHP Developement Project Intership",
+      company: "Alagappa University",
+      period: "2024",
+      description:
+        "Lead frontend development team, architected scalable PHP applications, and mentored junior developers.",
     },
   ];
 
@@ -275,7 +275,7 @@ const Home = () => {
                 </span>
               </h1>
               <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 animate-pulse">
-                React Developer
+                Developer, Digital Brand Strategist
               </h2>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-end space-y-4 sm:space-y-0 sm:space-x-4">
                 <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
@@ -300,14 +300,16 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-8"></div>
             <p className="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Passionate React developer with 1+ years of experience creating
-              dynamic, user-friendly web applications. I specialize in modern
-              JavaScript frameworks and have a strong background in full-stack
-              development. I love turning complex problems into simple,
-              beautiful, and intuitive solutions that provide exceptional user
-              experiences. To work in a competitive environment on challenging
-              assignments to utilize my knowledge & talents for the enhancement
-              of the organization and my personal fronts.
+              I am a skilled professional with over 1 year of experience in
+              React and PHP development, along with expertise as a Digital Brand
+              Strategist and Graphic Designer. I build dynamic, user-centric web
+              applications, solve real-world problems with clean code, and
+              design engaging digital experiences that align with brand goals.
+              With a strong foundation in full-stack development and creative
+              strategy, I thrive in collaborative, fast-paced environments where
+              innovation meets impact. My passion lies in turning complex
+              challenges into intuitive, functional, and visually appealing
+              solutions that drive growth for both businesses and users.
             </p>
           </div>
         </div>
@@ -382,7 +384,10 @@ const Home = () => {
                       </span>
                     ))}
                   </div>
-                  <button className="flex items-center text-blue-400 hover:text-blue-300 transition-colors font-medium">
+                  <button
+                    onClick={() => window.open(project.link, "_blank")}
+                    className="flex items-center text-blue-100 hover:text-blue-400 transition-colors font-medium"
+                  >
                     View Project <ExternalLink className="w-4 h-4 ml-2" />
                   </button>
                 </div>
