@@ -13,16 +13,29 @@ import {
   Briefcase,
   Menu,
   X,
+  Instagram,
 } from "lucide-react";
 
 const Home = () => {
-  const [formData, setFormData] = useState({
+  useEffect(() => {
+    const form = document.getElementById("contact-form");
+
+    form?.addEventListener("submit", function (e) {
+      // Timeout to give Formspree time to open the new tab
+      setTimeout(() => {
+        document.getElementById("form-wrapper").style.display = "none";
+        document.getElementById("thank-you").style.display = "block";
+      }, 300);
+    });
+  }, []);
+
+  /* const [formData, setFormData] = useState({
     name: "",
     mobile: "",
     email: "",
     message: "",
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);*/
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -46,8 +59,7 @@ const Home = () => {
       description:
         "A full-stack e-commerce solution built with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+      image: "/ecommerce.png",
       link: "https://sanaecom.netlify.app/",
     },
     {
@@ -55,8 +67,7 @@ const Home = () => {
       description:
         "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
       tech: ["React", "Firebase", "Material-UI", "Socket.io"],
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      image: "/todoapp.png",
       link: "#",
     },
     {
@@ -64,8 +75,7 @@ const Home = () => {
       description:
         "An Event Management System developed using PHP and MySQL is a web-based application that facilitates the planning, eventadd, and management of events through a combination of server-side scripting (PHP) and a relational database management system (MySQL)..",
       tech: ["HTML", "CSS", "JS", "PHP", "MYSQL"],
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop",
+      image: "/event.png",
       link: "#",
     },
     {
@@ -73,8 +83,7 @@ const Home = () => {
       description:
         "Designing a PHP application for Library Management System backed SQL as the relational database. This will enable the   application to run as a service in the Xampp Web Server..",
       tech: ["HTML", "CSS", "JS", "PHP", "MYSQL"],
-      image:
-        "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=250&fit=crop",
+      image: "Library.png",
       link: "#",
     },
   ];
@@ -102,7 +111,7 @@ const Home = () => {
         "Lead frontend development team, architected scalable PHP applications, and mentored junior developers.",
     },
   ];
-
+  /*
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -124,7 +133,7 @@ const Home = () => {
         setFormData({ name: "", mobile: "", email: "", message: "" });
       }, 3000);
     }
-  };
+  };*/
 
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -172,14 +181,16 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             {/* Logo */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center animate-pulse">
-                <Code className="w-6 h-6 text-white" />
+            <a href="/">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center animate-pulse">
+                  <Code className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
+                  Palanikumar
+                </span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent">
-                Palanikumar
-              </span>
-            </div>
+            </a>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
@@ -247,7 +258,6 @@ const Home = () => {
           )}
         </div>
       </nav>
-
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -278,9 +288,14 @@ const Home = () => {
                 Developer, Digital Brand Strategist
               </h2>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-end space-y-4 sm:space-y-0 sm:space-x-4">
-                <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1">
+                <a
+                  href="/Palanikumarcv.pdf" // Replace with actual path or URL to your CV
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+                >
                   Download CV
-                </button>
+                </a>
                 <button
                   onClick={() => scrollToSection("contact")}
                   className="border border-white border-opacity-20 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-white transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
@@ -292,7 +307,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* About Section */}
       <section id="about" className="py-20 bg-black bg-opacity-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -314,7 +328,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Skills Section */}
       <section id="skills" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -344,7 +357,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-black bg-opacity-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -396,7 +408,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Experience Section */}
       <section id="experience" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -432,121 +443,142 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-black bg-opacity-20">
+      {/* Contact Section */}(
+      <section id="contact" className="py-20 bg-black bg-opacity-20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Contact Me</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto"></div>
           </div>
+
           <div className="max-w-2xl mx-auto">
-            {!isSubmitted ? (
-              <div className="space-y-6 animate-fade-in-up">
+            <div id="form-wrapper">
+              <form
+                id="contact-form"
+                action="https://formspree.io/f/mgvynypa" // Replace with your endpoint
+                method="POST"
+                target="_blank"
+                className="space-y-6 animate-fade-in-up"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 placeholder-white border border-white border-opacity-20 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:bg-opacity-20 transition-all duration-300"
-                    />
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="tel"
-                      name="mobile"
-                      placeholder="Mobile Number"
-                      value={formData.mobile}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 placeholder-white border border-white border-opacity-20 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:bg-opacity-20 transition-all duration-300"
-                    />
-                  </div>
-                </div>
-                <div className="relative">
                   <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 placeholder-white border border-white border-opacity-20 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:bg-opacity-20 transition-all duration-300"
+                    type="text"
+                    name="name"
+                    placeholder="Your Name"
+                    required
+                    className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 text-white placeholder-white border border-white border-opacity-20 rounded-lg"
+                  />
+                  <input
+                    type="tel"
+                    name="mobile"
+                    placeholder="Mobile Number"
+                    required
+                    className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 text-white placeholder-white border border-white border-opacity-20 rounded-lg"
                   />
                 </div>
-                <div className="relative">
-                  <textarea
-                    name="message"
-                    placeholder="Your Message"
-                    rows="6"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 placeholder-white border border-white border-opacity-20 rounded-lg text-white focus:outline-none focus:border-blue-500 focus:bg-opacity-20 transition-all duration-300 resize-none"
-                  ></textarea>
-                </div>
+
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  required
+                  className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 text-white placeholder-white border border-white border-opacity-20 rounded-lg"
+                />
+
+                <textarea
+                  name="message"
+                  placeholder="Your Message"
+                  rows="6"
+                  required
+                  className="w-full px-4 py-3 bg-gradient-to-r from-blue-700 to-purple-800 text-white placeholder-white border border-white border-opacity-20 rounded-lg resize-none"
+                ></textarea>
+
                 <div className="text-center">
                   <button
-                    onClick={handleSubmit}
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 font-semibold"
+                    type="submit"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 hover:-translate-y-1 font-semibold"
                   >
                     Send Message
                   </button>
                 </div>
-              </div>
-            ) : (
-              <div className="text-center animate-bounce">
+              </form>
+            </div>
+
+            <div id="thank-you" style={{ display: "none" }}>
+              <div className="text-center animate-bounce mt-10">
                 <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
-                  <Award className="w-10 h-10 text-white" />
+                  <svg
+                    className="w-10 h-10 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Thank You!</h3>
                 <p className="text-gray-300">
-                  Your message has been sent successfully. I'll get back to you
-                  soon!
+                  Your message has been sent successfully.
                 </p>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </section>
-
       {/* Footer with Social Media */}
       <footer className="py-8 border-t border-white border-opacity-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 mb-4 md:mb-0">
-              © 2025 Palani Kumar. All rights reserved.
-            </p>
+            <a href="https://sanaecom.netlify.app/" target="_blank">
+              <p className="text-gray-400 mb-4 md:mb-0">
+                © 2025 Palani Kumar. All rights reserved.
+              </p>
+            </a>
             <div className="flex space-x-6">
               <a
-                href="#"
+                href="https://github.com/"
+                target="_blank"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
               >
                 <Github className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/palani-kumar-a93397269/"
+                target="_blank"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://x.com"
+                target="_blank"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
               >
                 <Twitter className="w-6 h-6" />
               </a>
               <a
                 href="#"
+                target="_blank"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
               >
                 <Mail className="w-6 h-6" />
+              </a>
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
+              >
+                <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>
         </div>
       </footer>
-
       {/* Custom Animations */}
       <style jsx>{`
         @keyframes fade-in-up {
