@@ -46,11 +46,14 @@ const Home = () => {
     { name: "JavaScript", image: "/js.svg", icon: "🟨" },
     { name: "Node.js", image: "/nodejs.svg", icon: "🔷" },
     { name: "Tailwindcss", image: "/tailwind-css-2.svg", icon: "🟢" },
-    { name: "MongoDB", image: "/mangodb.png", icon: "🍃" },
+    { name: "MySQL", image: "/mysql.svg", icon: "🍃" },
+    { name: "MongoDB", image: "/mangodb.png" },
     { name: "Git", image: "/git.svg", icon: "🔧" },
     { name: "PHP", image: "/php.svg", icon: "🟣" },
     { name: "Wordpress", image: "/wordpress.svg", icon: "⚡" },
     { name: "Figma", image: "/figma.svg", icon: "🔧" },
+    { name: "Illustrator", image: "/a-illustrator.svg" },
+    { name: "Photoshop", image: "/a-photoshop.svg" },
   ];
 
   const projects = [
@@ -443,7 +446,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-      {/* Contact Section */}(
+      {/* Contact Section */}
       <section id="contact" className="py-20 bg-black bg-opacity-20 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in-up">
@@ -562,18 +565,11 @@ const Home = () => {
                 <Twitter className="w-6 h-6" />
               </a>
               <a
-                href="#"
+                href="https://mail.google.com/mail/"
                 target="_blank"
                 className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
               >
                 <Mail className="w-6 h-6" />
-              </a>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                className="text-gray-400 hover:text-blue-400 transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
-              >
-                <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>
