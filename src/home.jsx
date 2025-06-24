@@ -147,6 +147,53 @@ const Home = () => {
     }
   };
 
+  const words = ["React Developer", "Digital Brand Strategist"];
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0); // Current word index
+  const [charIndex, setCharIndex] = useState(0); // Current character index
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentWord = words[index];
+
+    let typingSpeed = isDeleting ? 80 : 200; // slower typing speed
+
+    const handleTyping = () => {
+      if (isDeleting) {
+        setText(currentWord.substring(0, charIndex - 1));
+        setCharIndex((prev) => prev - 1);
+      } else {
+        setText(currentWord.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        setTimeout(() => setIsDeleting(true), 1500); // wait before deleting
+      } else if (isDeleting && charIndex === 0) {
+        setIsDeleting(false);
+        setIndex((prev) => (prev + 1) % words.length);
+      }
+    };
+
+    const timeout = setTimeout(handleTyping, typingSpeed);
+    return () => clearTimeout(timeout);
+  }, [charIndex, isDeleting, index]);
+
+  useEffect(() => {
+    const typing = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setChar((prev) => prev + 1);
+        } else {
+          setChar((prev) => prev - 1);
+        }
+      },
+      isDeleting ? 50 : 120
+    );
+
+    return () => clearTimeout(typing);
+  }, [text]);
+
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -288,7 +335,8 @@ const Home = () => {
                 </span>
               </h1>
               <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-8 animate-pulse">
-                Developer, Digital Brand Strategist
+                {text}
+                <span className="border-r-2 border-white ml-1 animate-pulse" />
               </h2>
               <div className="flex flex-col sm:flex-row justify-center lg:justify-end space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
